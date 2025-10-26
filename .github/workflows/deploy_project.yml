@@ -1,1 +1,21 @@
 name: Deploy Project
+on: push
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Repository
+              uses: actions/checkout@v5
+
+            - name: Lint Codebase
+              run: |
+                  echo "Linting the codebase..."
+                  npm run lint
+            - name: Test Codebase
+              run: |
+                  echo "Running tests..."
+                  npm run test
+            - name: Deploy Application
+              run: |
+                    echo "Deploying the application..."
+                    npm run deploy
